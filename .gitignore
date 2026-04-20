@@ -1,0 +1,19 @@
+# Entornos virtuales
+venv/
+env/
+
+# Variables de entorno (Crítico para no exponer credenciales de Postgres)
+.env
+
+# Caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Configuraciones de editores locales
+.vscode/
+.idea/
+
+# Archivos de SO
+.DS_Store
+Thumbs.db
