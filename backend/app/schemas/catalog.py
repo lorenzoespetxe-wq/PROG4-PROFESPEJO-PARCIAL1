@@ -62,6 +62,12 @@ class IngredienteCreate(IngredienteBase):
     pass  # es igual al base
 
 
+class IngredienteUpdate(SQLModel):
+    nombre: Optional[str] = Field(default=None, max_length=100)
+    descripcion: Optional[str] = None
+    es_alergeno: Optional[bool] = None
+
+
 class ProductoCreate(ProductoBase):
     # Productos necesitará que le demos al menos 1 id de categoria
     # y podemos darle los ids de los ingredientes.

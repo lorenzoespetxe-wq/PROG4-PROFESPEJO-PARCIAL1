@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api import categorias, productos
+from app.api import categorias, productos, ingredientes
 from app.core.database import engine
 from sqlmodel import SQLModel
 
@@ -19,6 +19,8 @@ def on_startup():
 app.include_router(categorias.router, prefix="/api")
 # same with productos
 app.include_router(productos.router, prefix="/api")
+# same with ingredientes
+app.include_router(ingredientes.router, prefix="/api")
 
 
 # Endpoint de prueba para ver que el back esta en linea
