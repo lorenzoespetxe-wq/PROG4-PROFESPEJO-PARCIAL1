@@ -48,6 +48,16 @@ class CategoriaCreate(CategoriaBase):
     pass  # es igual al base
 
 
+# Para el update vamos a poner como opcional el nombre, porque
+# si le queremos cambiar la imagen a una categoría por ejemplo,
+# probablemente no necesitemos cambiarle el nombre.
+class CategoriaUpdate(SQLModel):
+    nombre: Optional[str] = Field(default=None, max_length=100)
+    descripcion: Optional[str] = None
+    imagen_url: Optional[str] = None
+    parent_id: Optional[int] = None
+
+
 class IngredienteCreate(IngredienteBase):
     pass  # es igual al base
 
@@ -57,6 +67,17 @@ class ProductoCreate(ProductoBase):
     # y podemos darle los ids de los ingredientes.
     categoria_ids: List[int] = Field(min_length=1)
     ingrediente_ids: List[int] = []
+
+
+class ProductoUpdate(SQLModel):  # Todo va opcional para el patch
+    nombre: Optional[str] = Field(default=None, max_length=150)
+    descripcion: Optional[str] = None
+    imagenes_url: Optional[List[str]] = None
+    precio_base: Optional[float] = Field(default=None, ge=0.0)
+    stock_cantidad: Optional[int] = Field(default=None, ge=0)
+    disponible: Optional[bool] = None
+    categoria_ids: Optional[List[int]] = None
+    ingrediente_ids: Optional[List[int]] = None
 
 
 # ESQUEMAS DE SALIDA:
